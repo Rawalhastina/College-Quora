@@ -1,0 +1,59 @@
+{% load static %}
+{% include 'header.html' %}
+<br><br><br><br><br><br>
+
+<h1 class='text-center'>Welcome User </h1>
+<hr>
+
+<div class='row'>
+    <div class='col-lg-1'></div>
+    
+    <div class='col-lg-5 text-center'>
+        <h1>Register User</h1>
+        <hr>
+        <form action="/college/register" method='POST'>
+            {% csrf_token %}
+            <input name="unm" class='form-control' type='text' placeholder="Your Name" required>
+            <br>           
+            <input name="email" class='form-control' type='email' placeholder="Email ID" required>
+            <br>
+            <input name="pwd" class='form-control' type='password' placeholder="Password" required>
+            <br>
+            <select name='type' class='form-control' required>
+                <option value=''>Choose Type</option>
+                <option value='1'>Faculty</option>
+                <option value='2'>Student</option>
+            </select>
+            <br>
+            <select name='branch' class='form-control' required>
+                    <option value=''>Choose Branch</option>
+                    <option value='1'>CS</option>
+                    <option value='2'>ME</option>
+            </select>
+                <br>
+            <button type='submit' class='btn btn-info'>Register Us</button>
+            &nbsp;&nbsp;
+            <b class='text-danger'>{{regmsg}}</b>
+        </form>
+    </div>
+
+    <div class='col-lg-5 text-center'>
+        <h1>Login User</h1>
+        <hr>
+        <form action="/college/login" method='POST'>
+            {% csrf_token %}
+            <input class='form-control' name="email" type='email' placeholder="Email ID">
+            <br>
+            <input class='form-control' name='pwd' type='password' placeholder="Password">
+            <br>
+            <button type='submit' class='btn btn-info'>Login Us</button>
+            &nbsp;&nbsp;
+            <b class='text-danger'>{{loginmsg}}</b>
+        </form>
+    </div>
+
+    <div class='col-lg-1'></div>
+</div>
+
+
+{% include 'footer.html' %}
